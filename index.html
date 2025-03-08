@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3; url=https://ahk1384.github.io/Trees-CE03/">
+    <title>...در حال انتقال</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa; 
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/98/Tree_icon.svg'); 
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: 200px 200px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00796b; 
+            text-align: center;
+            overflow: hidden;
+            flex-direction: column; 
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 40px 60px;
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            animation: bounceIn 1s ease-out;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            animation: fadeIn 2s ease-in-out;
+            color: #00796b;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 20px 0;
+            animation: fadeIn 2.5s ease-in-out forwards;
+            opacity: 0;
+            color: #00796b;
+        }
+
+        .timer {
+            font-size: 22px;
+            color: #004d40;
+            font-weight: bold;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        a {
+            font-size: 20px;
+            color: #004d40;
+            text-decoration: none;
+            border: 2px solid #004d40;
+            padding: 12px 24px;
+            border-radius: 30px;
+            margin-top: 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #004d40;
+            color: #ffffff;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>...در حال انتقال </h1>
+    <p>...لطفا ۳ ثانیه صبر کنید</p>
+    <div class="timer">۳ ثانیه</div>
+    <p>اگر به‌طور خودکار منتقل نشدید، <a href="https://ahk1384.github.io/Trees-CE03/">اینجا کلیک کنید</a>.</p>
+</div>
+
+</body>
+</html>
