@@ -50,6 +50,7 @@
         .dots {
             display: inline-block;
             animation: blink 1.5s infinite;
+            margin-left: 5px;
         }
 
         p {
@@ -125,10 +126,10 @@
             font-size: 16px;
             font-weight: bold;
             color: #004d40;
-            background-color: rgba(255, 255, 255, 0.9); 
-            padding: 8px 0; 
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 8px 0;
             animation: fadeIn 3s ease-in-out forwards;
-            border-top: 1px solid #00796b; 
+            border-top: 1px solid #00796b;
         }
 
         @keyframes fadeIn {
@@ -157,10 +158,10 @@
 <body>
 
 <div class="container">
-    <h1>...در حال انتقال<span class="dots">...</span></h1>
+    <h1><span class="dots">...</span>در حال انتقال</h1>
     <p>...لطفا ۳ ثانیه صبر کنید</p>
     <div class="timer-container">
-        <div class="timer" id="countdown">۳</div>
+        <div class="timer" id="countdown">3</div>
         <div class="progress-circle">
             <svg>
                 <circle cx="30" cy="30" r="28"></circle>
@@ -174,6 +175,8 @@
 <script>
     let timeLeft = 3;
     const countdown = document.getElementById('countdown');
+    
+    countdown.textContent = timeLeft; 
     
     const timer = setInterval(() => {
         timeLeft--;
