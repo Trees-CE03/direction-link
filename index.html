@@ -13,23 +13,21 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e0f7fa; 
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/98/Tree_icon.svg'); 
-            background-position: center bottom;
-            background-repeat: no-repeat;
-            background-size: 200px 200px;
+            background-color: #e0f7fa;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="#4CAF50"/><path class="branches" d="M10 90 Q 50 50 90 90 M30 70 Q 60 30 90 70 M20 80 Q 40 60 60 80" stroke="black" stroke-width="2" fill="none" opacity="0.3"/></svg>');
+            background-size: cover;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #00796b; 
+            color: #00796b;
             text-align: center;
             overflow: hidden;
-            flex-direction: column; 
+            flex-direction: column;
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.8); 
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 40px 60px;
             border-radius: 15px;
             backdrop-filter: blur(15px);
@@ -39,10 +37,19 @@
         }
 
         h1 {
+            font-family: 'Vazirmatn', sans-serif;
             font-size: 36px;
             margin-bottom: 15px;
             animation: fadeIn 2s ease-in-out;
             color: #00796b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dots {
+            display: inline-block;
+            animation: blink 1.5s infinite;
         }
 
         p {
@@ -53,11 +60,44 @@
             color: #00796b;
         }
 
+        .timer-container {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin: 20px auto;
+        }
+
         .timer {
-            font-size: 22px;
+            font-size: 28px;
             color: #004d40;
             font-weight: bold;
-            animation: pulse 1.5s infinite alternate;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .progress-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+        }
+
+        .progress-circle svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle circle {
+            fill: none;
+            stroke: #004d40;
+            stroke-width: 4;
+            stroke-dasharray: 188;
+            stroke-dashoffset: 188;
+            animation: progress 3s linear forwards;
         }
 
         a {
@@ -76,50 +116,74 @@
             color: #ffffff;
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .credit {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: #004d40;
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 8px 0; 
+            animation: fadeIn 3s ease-in-out forwards;
+            border-top: 1px solid #00796b; 
         }
 
-        @keyframes pulse {
-            0% {
-                opacity: 0.8;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes bounceIn {
-            0% {
-                transform: scale(0);
-            }
-            60% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(0); }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
+        @keyframes progress {
+            0% { stroke-dashoffset: 188; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>...در حال انتقال </h1>
+    <h1>در حال انتقال<span class="dots">...</span></h1>
     <p>...لطفا ۳ ثانیه صبر کنید</p>
-    <div class="timer">۳ ثانیه</div>
-    <p>اگر به‌طور خودکار منتقل نشدید، <a href="https://trees-ce03.github.io/">اینجا کلیک کنید</a>.</p> 
+    <div class="timer-container">
+        <div class="timer" id="countdown">۳</div>
+        <div class="progress-circle">
+            <svg>
+                <circle cx="30" cy="30" r="28"></circle>
+            </svg>
+        </div>
+    </div>
+    <p>اگر به‌طور خودکار منتقل نشدید، <a href="https://trees-ce03.github.io/">اینجا کلیک کنید</a>.</p>
 </div>
+<div class="credit">Redirected by (ila)-¹</div>
+
+<script>
+    let timeLeft = 3;
+    const countdown = document.getElementById('countdown');
+    
+    const timer = setInterval(() => {
+        timeLeft--;
+        countdown.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            window.location.href = "https://trees-ce03.github.io/";
+        }
+    }, 1000);
+</script>
 
 </body>
 </html>
